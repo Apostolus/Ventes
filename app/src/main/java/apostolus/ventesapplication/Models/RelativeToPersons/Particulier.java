@@ -4,67 +4,42 @@ import java.util.ArrayList;
 
 import apostolus.ventesapplication.Models.ActionTest.CompteBanque;
 import apostolus.ventesapplication.Models.RelativeToThings.Article;
-import apostolus.ventesapplication.Models.RelativeToThings.Commande;
+import apostolus.ventesapplication.Models.ActionsBtwPersonsThings.Commande;
 
 public class Particulier extends Entite {
 
     private double note;
     private ArrayList<Article> acquis;
 
-    public Particulier(String nom, Coordonnees cordonnees, CompteBanque compteBanque) {
+    public Particulier(String nom, Coordonnees cordonnees) {
         super(cordonnees.getCountry(),cordonnees.getDepartement(),cordonnees.getCity(),cordonnees.getSpecificAdress(),cordonnees.getEmail(),cordonnees.getPhoneNumber(),nom);
-        this.acquis = new ArrayList<Article>();
+        this.acquis = new ArrayList<>();
         this.note=0;
     }
 
-    public Particulier() {
-    	this("nomParticulier", new Coordonnees(),new CompteBanque());
-	}
-    
-    /**
-     * 
-     * @param article
-     * @return
-     */
-
     public Article retirerArticleVendu(Article article){
-        int index = articleArray.indexOf(article);
-        return articleArray.remove(index);
+        //TODO
+        return  null;
     }
-    
-    /**
-     * 
-     * @param articleAVendre
-     */
 
     public void mettreEnVente(Article articleAVendre) {
-        int index = acquis.indexOf(articleAVendre);
-        articleArray.add(acquis.remove(index));
+        //TODO
     }
-    
-    /**
-     * 
-     * 
-     */
 
-    public void noterVendeur(){ //on parcours les objets a vendre et on definit la note enfonction de l'etat de chaque objct
-        double sommeEtat=0 ;
-        int nbArticle=0;
-        for(Article articleEnVente: articleArray){
-            sommeEtat+= articleEnVente.getEtat();
-            nbArticle++;
-        }
-        if(nbArticle != 0) this.note = (sommeEtat/nbArticle);
+
+    public void noterVendeur(){
+      //TODO
     }
 
     @Override
     public boolean verifierDisponibilite(Article article, int quantite) {
+        //TODO
         return false;
     }
 
     @Override
     public void recevoirCommande(Commande commande) {
-
+        //TODO
     }
 
     /**

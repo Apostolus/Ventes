@@ -1,11 +1,12 @@
-package apostolus.ventesapplication.Models.RelativeToThings;
+package apostolus.ventesapplication.Models.ActionsBtwPersonsThings;
 
 
 import java.util.ArrayList;
 
-import apostolus.ventesapplication.Models.ActionsBtwPersonsThings.Time;
 import apostolus.ventesapplication.Models.RelativeToPersons.Entite;
 import apostolus.ventesapplication.Models.RelativeToPersons.Entrepot;
+import apostolus.ventesapplication.Models.RelativeToThings.Article;
+import apostolus.ventesapplication.Models.RelativeToThings.Mobilier;
 
 public class Commande{
 
@@ -33,39 +34,18 @@ public class Commande{
      * l'attribut quantité de la classe Article qui représentait le nombre d'exemplaire,
      * est utilisé dans cette classe comme la quantité commandée par le client.
      *
-     * @param quantite
-     * @param entite
-     */
+	 */
     
-    public boolean addCommande(Article articleNew,int quantite,Entite entite) {
-    	
-    	Article article = articleNew.clone();
-    	article.setQuantite(quantite);
+    public boolean addCommande(Article article, Entite entite, int quantite) {
 
-    	if(!entite.verifierDisponibilite(article, quantite)) {
+
+    	if(!entite.verifierDisponibilite(article,quantite)) {
     		System.out.println("\n\n\n L'article n'est pas disponible");
     		return false;
     	}
+    	articlesCommande.add(article);
 
-    	if(articlesCommande.contains(article)) {
-    		int index = articlesCommande.indexOf(article); // je prend l'index de l'article
-        	Article articleTemp = articlesCommande.remove(index);
-
-        	if(articleTemp instanceof Mobilier) {
-        		((Mobilier)articleTemp).increaseQuantite(quantite);;
-        	}
-    		articlesCommande.add(articleTemp);
-    		return true;
-
-    	}
-    	else {
-
-    		if(article instanceof Mobilier) {
-        		((Mobilier)article).setQuantite(quantite);;
-        	}
-    		articlesCommande.add(article);
-    		return true;
-    	}
+    	return true;
     	
     }
     
@@ -104,9 +84,6 @@ public class Commande{
     	for(Article article : articlesCommande) {
     		
     		int quantite = 1;
-    		if(article instanceof Mobilier) {
-    			quantite = ((Mobilier)article).getQuantite();
-    		}
     		price+= (article.getPrice()*quantite);
     	}
     	return price;
@@ -133,8 +110,5 @@ public class Commande{
         	System.out.println(article);
     	}
     }
-
-
-    
     
 }

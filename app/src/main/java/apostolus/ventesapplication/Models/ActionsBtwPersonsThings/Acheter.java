@@ -1,7 +1,5 @@
 package apostolus.ventesapplication.Models.ActionsBtwPersonsThings;
 
-import apostolus.ventesapplication.Models.RelativeToThings.Commande;
-
 public interface Acheter{
 
 
